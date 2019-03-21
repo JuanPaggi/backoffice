@@ -14,6 +14,7 @@ if(!file_exists('settings.php'))
 		return new PDO($dsn, dbData::$user, dbData::$pass);
 	} catch(PDOException $e)
 	{
+		var_dump($e);
 		_::onDbFail();
 		return null;
 	}

@@ -1,0 +1,8 @@
+# docker build . -t byo-backoffice:1.0.0
+FROM php:7.3-fpm-alpine
+# TODO: agregar el nginx.
+# https://github.com/michaelcontento/docker-nginx-php-fpm/blob/master/Dockerfile
+RUN docker-php-ext-install mysqli pdo pdo_mysql
+RUN mkdir /code
+COPY ../../src ./code
+

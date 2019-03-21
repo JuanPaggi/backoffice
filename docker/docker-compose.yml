@@ -8,6 +8,6 @@ web:
     links:
         - php
 php:
-    image: php:7-fpm
+    image: php-fpm-mysql:1.0.0
     volumes:
         - ../src:/code

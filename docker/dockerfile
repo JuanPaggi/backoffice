@@ -1,5 +1,0 @@
-# docker build . -t byo-backoffice:1.0.0
-FROM php:7.2-fpm
-RUN mkdir /app
-COPY ../src ./app
-
