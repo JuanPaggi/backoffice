@@ -8,6 +8,6 @@ web:
     links:
         - php
 php:
-    image: php-fpm-mysql:1.0.0
+    image: alexander171294/tandilweb:php-fpm-mysql-1.0.0
     volumes:
         - ../src:/code
