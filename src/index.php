@@ -16,7 +16,7 @@ require('phpquery/loader.php');
 
 coreData::$default_404_controller = 'e404';
 //coreData::$default_500_controller = 'e500';
-coreData::$v = 'design/';
+coreData::$v = 'views/';
 
 // this set new values for the default configuration of DB
 // see default config in phpquery/default_config/dbData.php
