@@ -83,3 +83,5 @@ function getRealIP() {
  
     return $_SERVER['REMOTE_ADDR'];
 }
+
+include('pbkdf2.php');
