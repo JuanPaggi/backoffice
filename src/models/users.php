@@ -28,4 +28,8 @@ class users extends table
     public $fcm_token = null;
     public $is_admin = null;
 
+    public static function getByEmail($email) {
+        return self::getUniqueObject('id_user', 'WHERE email = ?', array($email));
+    }
+
 }
