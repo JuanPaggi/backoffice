@@ -8,15 +8,14 @@ $(document).ready(function(){
         $('.page-loader').css('display', 'flex');
         $.post('/login', {user, pass}, function(resp) {
             if(resp.status == 'ok') {
-                window.top.locaion = '/dashboard';
-                $('#page-loader').css('display', 'none');
+                window.top.location = '/dashboard';
             } else {
                 $('#user').css('border', '1px solid red');
                 $('#pass').css('border', '1px solid red');
                 $('#pass').val('');
-                $('#page-loader').css('display', 'none');
+                $('.page-loader').css('display', 'none');
             }
-        });
+        }, 'JSON');
     });
 
 });
