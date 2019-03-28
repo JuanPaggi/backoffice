@@ -1,0 +1,70 @@
+routes.php
+_::declare_controller('ARCHIVO', 'CONTROLADOR', 'CONTROLADOR', 'CONTROLADOR');
+
+================> Se puede saber si es POST:
+_::$isPost == true
+
+================> Devolver vistas:
+_::$view->show('NOMBRE ARCHIVO'); hay que considerar que no lleva extension (busca en views/archivo.html)
+_::$view->ajax(array()); // procesa el parametro a json y lo devuelve.
+_::$view->ajax_plain('ASDASDASD'); // devuelve el string sin procesar
+_::redirect('/ubicacion', false); redireccion
+
+================> Obtener datos:
+_::$post['variable'] UN OBJETO
+_::$post['variable']->int() PASAR A int
+(string)_::$post['variable'] PASAR A string
+
+_::$post['variable']->len() TAMAÑO
+_::$post['variable']->words() CANTIDAD DE PALABRAS
+isEmail()
+isLink() (ver si es una url valida)
+_::$post['variable']->b64_e() (codificar en base64)
+hash() trae hash para guardar en db ecnriptado (passwords)
+_::$post['variable']->check($DB_HASH) // COMPRARAR ENTRADA CONTRA HASH EN DB_HASH
+seo() devolver formato url seo.
+
+/nombreControlador/12
+
+_::$get['page'];
+_::$get['variable']->int()
+...
+
+================> Modelos:
+TRABAJAR CON UN REGISTRO:
+$obj = new TABLA(); // crea un nuevo registro
+$obj = new TABLA(15); // busca el que tenga clave primaria 15
+$obj = new TABLA(array(15,43)); // trae por las dos claves primarias
+
+$obj->propiedad = 'valor';
+
+$obj->void // boolean para verificar si existía el registro
+$obj->save(); // crea o actualiza el registro.
+
+TRABAJAR CON TABLAS:
+TABLA::count('clave_primaria', 'WHERE', array(values)); // cantidad de registros
+TABLA::getAll('WHERE', array(values)); // obtener todos pero arreglo de datos.
+TABLA::getAllObjects('clave_primaria', 'LIMIT 5', array(values)); // obtener todos pero arreglo de objetos
+TABLA::deleteAlll('WHERE', array(values)); // elimina todos los registros que cumplan el where
+TABLA::getUnique('WHERE', array(values)); datos de un registro
+TABLA::getUniqueObject('clave_primaria', 'WHERE', array(values)); datos de un objetos
+TABLA::random(); traer uno al azar.
+
+================> Templates
+_::$view->assign('nombreVariable', valor); mandar valor a la vista desde controlador
+{$nombreVariable} reemplaza por el valor.
+{$nombreVariable->propiedad}
+
+{loop=$nombreVariable as $otravariable}
+
+{$otravariable}
+
+{/loop}
+
+{if="$nombreVariable->sasdas == asdasd"}
+
+{else}
+
+{/if}
+
+{dump=$variable} var_dump
