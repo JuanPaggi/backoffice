@@ -13,4 +13,17 @@ class stands extends table
     public $logo = null;
     public $id_user_organizer = null;
 
+    // singleton getOrganizador 
+    private $user_organizer = null;
+    public function getOrganizador() {
+        if($this->user_organizer) {
+            $this->user_organizer = new users($this->id_user_organizer);
+        }
+        return $this->user_organizer;
+    }
+    // fin singleton getOrganizador
+
+    public function countCheckins() {
+        return stands_checkin::count('id_user', 'WHERE id_stand = ?', array($this->id_stand));
+    }
 }

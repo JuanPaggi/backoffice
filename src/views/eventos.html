@@ -1,0 +1,66 @@
+<section class="content">
+    <header class="content__title">
+        <h1>Lista eventos</h1>
+<!-- 
+        <div class="actions">
+            <a href="" class="actions__item zmdi zmdi-trending-up"></a>
+            <a href="" class="actions__item zmdi zmdi-check-all"></a>
+
+             <div class="dropdown actions__item">
+                <i data-toggle="dropdown" class="zmdi zmdi-more-vert"></i>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <a href="" class="dropdown-item">Refresh</a>
+                    <a href="" class="dropdown-item">Manage Widgets</a>
+                    <a href="" class="dropdown-item">Settings</a>
+                </div>
+            </div> 
+        </div> -->
+    </header>
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Eventos</h4>
+            <h6 class="card-subtitle">Puede observar la lista de eventos, y desde el menú de opciones puede acceder a la lista de stands, cargar un stand, generar códigos, etc.</h6>
+
+            <div class="table-responsive">
+                <table id="data-table" class="table table-bordered">
+                    <thead class="thead-default">
+                        <tr>
+                            <th>#</th>
+                            <th>Nombre</th>
+                            <th>Logo</th>
+                            <th>Link pago</th>
+                            <th>Tamaño (Radio en Km)</th>
+                            <th>Lugar</th>
+                            <th>Fechas</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {loop=$eventos as $evento}
+                        <tr style="{if="$evento->isFinished()"}background-color: pink;{/if}">
+                            <th scope="row">{$evento->id_event}</th>
+                            <td>{$evento->name}</td>
+                            <td><img src="{$evento->logo}" width="50" height="50" /></td>
+                            <td>{if="empty($evento->url)"}Sin cargar{else}<a href="{$evento->url}" target="_blank">Ver</a>{/if}</td>
+                            <td>{$evento->radio}kms</td>
+                            <td>{$evento->nombre_lugar}</td>
+                            <td>{$evento->start_date} {$evento->end_date}</td>
+                            <td>
+                                <div class="dropdown actions__item">
+                                    <i data-toggle="dropdown" class="zmdi zmdi-more-vert"></i>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a href="/events_stands/{$evento->id_event}" class="dropdown-item">Stands</a>
+                                        <a href="/code_gen/{$evento->id_event}" class="dropdown-item">Generar codigos</a>
+                                        <a href="/events_form/{$evento->id_event}" class="dropdown-item">Editar</a>
+                                        <a href="#" data-id="{$evento->id_event}" class="dropdown-item" style="background-color: pink">Eliminar</a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        {/loop}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>

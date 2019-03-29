@@ -11,4 +11,8 @@ class stands_checkin extends table
     public $id_user = null;
     public $date_checkin = null;
 
+    static public function getUsersOfCheckin($id_stand) {
+        return users::getAllObjects('id_user', 'LEFT JOIN stands_checkin ON stands_checkin.id_stand = ? WHERE users.id_user = stands_checkin.id_user', array($id_stand));
+    }
+
 }

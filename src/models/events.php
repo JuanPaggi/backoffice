@@ -18,4 +18,9 @@ class events extends table
     public $nombre_lugar = null;
     public $location_description = null;
 
+    public function isFinished() {
+        // TODO: validar fecha
+        return false;
+    }
+
 }
