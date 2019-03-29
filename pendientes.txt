@@ -6,3 +6,10 @@ cambiar contraseña: HEADER.HTML y pantalla
 ver ultimos 50 mensajes enviados (menu debajo de chats->conversaciones)
 <!-- <li {if="$sub_menu_seleccionado == 'last_messages'"}class="navigation__active"{/if}><a href="/last_messages">Últimos mensajes</a></li> -->
 y la pantalla entera faltaría.
+
+
+falta enviar el mensaje al usuario. (users.html, perfil.html)
+<!-- <a href="#" class="dropdown-item">Enviar mensaje</a> -->
+
+falta el marcar posiciones del usuario en el mapa: (perfil.html)
+<!-- <a href="/dashboard" class="actions__item zmdi zmdi-pin"></a> -->

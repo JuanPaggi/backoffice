@@ -41,7 +41,7 @@
                         <tr style="{if="$user->is_admin"}font-weight: bolder;{/if} {if="$user->locked"}background-color: pink;{/if}">
                             <th scope="row">{$user->id_user}</th>
                             <td>{$user->first_name} {$user->last_name}</td>
-                            <td>{$user->email}}</td>
+                            <td>{$user->email}</td>
                             <td>{$user->last_login}</td>
                             <td>{$user->signup_date}</td>
                             <td>{$user->linkedin_id}</td>
@@ -66,16 +66,16 @@
                                         <a href="/users_profile/{$user->id_user}" class="dropdown-item">Ver perfil</a>
 
                                         {if="$user->locked"}
-                                        <a href="#" class="dropdown-item">Desbloquear</a>
+                                        <a href="#" class="dropdown-item unlockUser" data-id="{$user->id_user}">Desbloquear</a>
                                         {/if}
 
                                         {if="$user->is_admin"}
-                                        <a href="#" class="dropdown-item">Quitar administrador</a>
+                                        <a href="#" class="dropdown-item removeAdmin" data-id="{$user->id_user}">Quitar administrador</a>
                                         {else}
-                                        <a href="#" class="dropdown-item">Hacer administrador</a>
+                                        <a href="#" class="dropdown-item doAdmin" data-id="{$user->id_user}">Hacer administrador</a>
                                         {/if}
 
-                                        <a href="#" class="dropdown-item">Enviar mensaje</a>
+                                        <!-- <a href="#" class="dropdown-item">Enviar mensaje</a> -->
                                     </div>
                                 </div>
                             </td>
