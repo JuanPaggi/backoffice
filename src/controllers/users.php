@@ -44,3 +44,18 @@ _::define_controller('users_profile', function(){
     _::$view->assign('perfil', new profile($id_usuario));
     _::$view->show('perfil');
 });
+
+// PETICIONES AJAX //
+
+_::define_controller('jx_user_unlock', function() {
+    $id = _::$post['id']->int();
+});
+_::define_controller('jx_user_rem_admin', function() {
+    $id = _::$post['id']->int();
+});
+_::define_controller('jx_user_add_admin', function() {
+    $id = _::$post['id']->int();
+});
+_::define_controller('jx_user_delete', function() {
+    $id = _::$post['id']->int();
+});

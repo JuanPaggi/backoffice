@@ -34,3 +34,36 @@ _::define_controller('events_checkins', function() {
     _::$view->assign('users', stands_checkin::getUsersOfCheckin($id_stand));
     _::$view->show('users');
 });
+
+// PETICIONES AJAX //
+
+_::define_controller('jx_event_delete', function() {
+    $id = _::$post['id']->int();
+    $stands = stands::getAll('WHERE id_event = ?', array($id));
+    foreach($stands as $stand) {
+        stands_checkin::deleteAll('WHERE id_stand = ?', array($stand['id_stand']));
+    }
+    stands::deleteAll('WHERE id_event = ?', array($id));
+    $codigos = codigos_externos::getAll('WHERE id_event = ?', array($id));
+    foreach($codigos as $codigo) {
+        codigos_externos_usados::deleteAll('WHERE id_codigo = ?', array($codigo['id_codigo']));
+    }
+    codigos_externos::deleteAll('WHERE id_event = ?', array($id));
+    $event = new events($id);
+    $event->delete();
+    _::$view->ajax(array('status' => 'ok'));
+});
+_::define_controller('jx_event_delete_stand', function() {
+    $id = _::$post['id']->int();
+    stands_checkin::deleteAll('WHERE id_stand = ?', array($id));
+    $stand = new stands($id);
+    $stand->delete();
+    _::$view->ajax(array('status' => 'ok'));
+});
+_::define_controller('jx_event_delete_code', function() {
+    $id = _::$post['id']->int();
+    codigos_externos_usados::deleteAll('WHERE id_codigo = ?', array($id));
+    $codigo = new codigos_externos($id);
+    $codigo->delete();
+    _::$view->ajax(array('status' => 'ok'));
+});
