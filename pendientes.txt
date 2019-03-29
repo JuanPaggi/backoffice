@@ -1,0 +1,8 @@
+Los "TODO"
+
+cambiar contraseña: HEADER.HTML y pantalla
+<!-- <a class="dropdown-item" href="/password_change">Cambiar contraseña</a> -->
+
+ver ultimos 50 mensajes enviados (menu debajo de chats->conversaciones)
+<!-- <li {if="$sub_menu_seleccionado == 'last_messages'"}class="navigation__active"{/if}><a href="/last_messages">Últimos mensajes</a></li> -->
+y la pantalla entera faltaría.

@@ -1,0 +1,81 @@
+<section class="content">
+    <div class="content__inner">
+        <header class="content__title">
+            <h1>Messages</h1>
+
+            <!-- <div class="actions">
+                <a href="" class="actions__item zmdi zmdi-trending-up"></a>
+                <a href="" class="actions__item zmdi zmdi-check-all"></a>
+
+                <div class="dropdown actions__item">
+                    <i data-toggle="dropdown" class="zmdi zmdi-more-vert"></i>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a href="" class="dropdown-item">Refresh</a>
+                        <a href="" class="dropdown-item">Manage Widgets</a>
+                        <a href="" class="dropdown-item">Settings</a>
+                    </div>
+                </div>
+            </div> -->
+        </header>
+        <div class="messages">
+            <div class="messages__body">
+                <div class="messages__header">
+                    <div class="toolbar toolbar--inner mb-0">
+                        <div class="toolbar__label"><b>{$userA->first_name} {$userA->last_name}</b> con <b>{$userB->first_name} {$userB->last_name}</b></div>
+
+                        <!-- <div class="actions toolbar__actions">
+                            <i class="actions__item zmdi zmdi-search" data-ma-action="toolbar-search-open"></i>
+                            <a href="" class="actions__item zmdi zmdi-time"></a>
+                            <a href="" class="actions__item zmdi zmdi-info-outline"></a>
+                            <div class="dropdown actions__item">
+                                <i class="actions__item zmdi zmdi-more-vert" data-toggle="dropdown"></i>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <a href="" class="dropdown-item">Refresh</a>
+                                    <a href="" class="dropdown-item">Delete all</a>
+                                    <a href="" class="dropdown-item">Settings</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="toolbar__search">
+                            <input type="text" placeholder="Search...">
+                            <i class="toolbar__search__close zmdi zmdi-long-arrow-left"
+                                data-ma-action="toolbar-search-close"></i>
+                        </div> -->
+                    </div>
+                </div>
+
+                <div class="messages__content">
+                    <div class="scrollbar-inner">
+                        {loop=$messages as $message}
+
+                        {if="$message->id_target == $userB->id_user"}
+                        <div class="messages__item">
+                            <a href="/users_profile/{$userA->id_user}"><img src="{$userA->picture_url}"
+                                    class="avatar-img" alt="{$userA->first_name} {$userA->last_name}"
+                                    title="{$userA->first_name} {$userA->last_name}"></a>
+                            <div class="messages__details">
+                                <p>{$message->messages}</p>
+                                <small><i class="zmdi zmdi-time"></i> {$message->fecha}</small>
+                            </div>
+                        </div>
+                        {else}
+                        <div class="messages__item messages__item--right">
+                            <a href="/users_profile/{$userB->id_user}"><img src="{$userB->picture_url}"
+                                    class="avatar-img" alt="{$userB->first_name} {$userB->last_name}"
+                                    title="{$userB->first_name} {$userB->last_name}"></a>
+
+                            <div class="messages__details">
+                                <p>{$message->messages}</p>
+                                <small><i class="zmdi zmdi-time"></i> {$message->fecha}</small>
+                            </div>
+                        </div>
+                        {/if}
+
+                        {/loop}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

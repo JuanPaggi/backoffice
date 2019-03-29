@@ -25,11 +25,11 @@
                 <table id="data-table" class="table table-bordered">
                     <thead class="thead-default">
                         <tr>
-                            <th>Ultimo Mensaje ID</th>
-                            <th>Usuario iniciador</th>
-                            <th>Usuario aceptador</th>
+                            <th>UM ID</th>
+                            <th>Iniciador</th>
+                            <th>Receptor</th>
                             <th>Ultimo mensaje</th>
-                            <th>Fecha ultimo mensaje</th>
+                            <th>Fecha UM</th>
                             <th>Visto</th>
                             <th>Acciones</th>
                         </tr>
@@ -43,7 +43,7 @@
                             <td>{$conversacion->getMessage()->messages}</td>
                             <td>{$conversacion->getMessage()->fecha}</td>
                             <td>
-                                {if="$conversacion->getMessage()->is_viewed()"}
+                                {if="$conversacion->getMessage()->is_viewed"}
                                 Si
                                 {else}
                                 No
