@@ -84,7 +84,21 @@ _::define_controller('jx_user_delete', function() {
     $id = _::$post['id']->int();
     $user = new users($id);
     if(!$user->void){
-
+        stands::deleteAll('WHERE id_user_organizer = ?', array($id));
+        stands_checkin::deleteAll('WHERE id_user = ?', array($id));
+        codigos_externos_usados::deleteAll('WHERE id_user = ?', array($id));
+        remember_tokens::deleteAll('WHERE id_user = ?', array($id));
+        configuration::deleteAll('WHERE id_user = ?', array($id));
+        friendships::deleteAll('WHERE id_user_requester = ? OR id_user_target = ?', array($id, $id));
+        cached_users_close::deleteAll('WHERE id_user_searcher = ? OR id_user_finded', array($id, $id));
+        gps_data_users::deleteAll('WHERE id_user = ?', array($id));
+        profile::deleteAll('WHERE id_user = ?', array($id));
+        // chats
+        chats::deleteAll('WHERE id_user_requester = ? OR id_user_sender = ?', array($id, $id));
+        messages::deleteAll('WHERE id_user_requester = ? OR id_user_sender = ?', array($id, $id));
+        
+        $user->delete();
+        _::$view->ajax(array('status' => 'ok'));
     } else {
         _::$view->ajax(array('status' => 'err'));
     }

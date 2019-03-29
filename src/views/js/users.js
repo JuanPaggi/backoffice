@@ -1,7 +1,8 @@
 $(document).ready(function(){
     $('.unlockUser').click(function(){
         let idUser = $(this).data('id');
-        if(confirm('Esta seguro de desbloquear este usuario?')) {
+        if(confirm('Esta seguro de desbloquear este usuario?') && 
+            confirm('Tenga en cuenta que se borraran los stands organizados, checkins, codigos, recordatorios, mensajes, chats, configuraciones, amistades, datos gps y perfil relacionados al usuario')) {
             $.post('/jx_user_unlock', {id: idUser}, function(){window.top.location.reload();});
         }
     });
