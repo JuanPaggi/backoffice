@@ -1,4 +1,6 @@
-* Probar alta evento y alta stand.
+* Probar alta evento y alta stand. (corregir cualquier error)
+
+* revisar por que no anda el generador de codigos de acceso.
 
 * falta carteles de errores en las altas de eventos y stands.
 
