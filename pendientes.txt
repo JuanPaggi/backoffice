@@ -1,23 +1,24 @@
-Probar alta evento y alta stand.
+* Probar alta evento y alta stand.
 
-falta carteles de errores en las altas de eventos y stands.
+* falta carteles de errores en las altas de eventos y stands.
 
-falta editar eventos y stands.
+* falta editar eventos y stands.
 
-Los "TODO" que hay en el código
+* Falta el campo gancho en la tabla stands para setear una mini descripcion del stand.
 
-cambiar contraseña: HEADER.HTML y pantalla
+* Los "TODO" que hay en el código
+
+* cambiar contraseña: HEADER.HTML y pantalla
 <!-- <a class="dropdown-item" href="/password_change">Cambiar contraseña</a> -->
 
-ver ultimos 50 mensajes enviados (menu debajo de chats->conversaciones)
+* ver ultimos 50 mensajes enviados (menu debajo de chats->conversaciones)
 <!-- <li {if="$sub_menu_seleccionado == 'last_messages'"}class="navigation__active"{/if}><a href="/last_messages">Últimos mensajes</a></li> -->
 y la pantalla entera faltaría.
 
-
-falta enviar el mensaje al usuario. (users.html, perfil.html)
+* falta enviar el mensaje al usuario. (users.html, perfil.html)
 <!-- <a href="#" class="dropdown-item">Enviar mensaje</a> -->
 
-falta el marcar posiciones del usuario en el mapa: (perfil.html)
+* falta el marcar posiciones del usuario en el mapa: (perfil.html)
 <!-- <a href="/dashboard" class="actions__item zmdi zmdi-pin"></a> -->
 
-falta imagen upload de los logos.
+* falta imagen upload de los logos.

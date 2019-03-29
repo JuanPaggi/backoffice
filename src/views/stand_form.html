@@ -1,0 +1,42 @@
+<section class="content">
+    <div class="content__inner">
+        <header class="content__title">
+            <h1>Agregar Stand</h1>
+        </header>
+
+        <div class="card">
+            <div class="card-body">
+                <form method="post">
+                    <div class="form-group">
+                        <h3 class="card-body__title">Nombre del stand</h3>
+                        <input type="text" class="form-control" placeholder="Nombre" name="nombre">
+                        <i class="form-group__bar"></i>
+                    </div>
+                    <div class="form-group">
+                        <h3 class="card-body__title">Email del organizador</h3>
+                        <input type="text" class="form-control" placeholder="ejemplo@ejemplo.ej" name="organizador">
+                        <i class="form-group__bar"></i>
+                    </div>
+                    <div class="form-group">
+                        <h3 class="card-body__title">Gancho</h3>
+                        <input type="text" class="form-control" placeholder="Descripcion del stand" name="gancho">
+                        <i class="form-group__bar"></i>
+                    </div>
+                    <div class="form-group">
+                        <h3 class="card-body__title">Logo</h3>
+                        <div class="dropzone" id="dropzone-upload"
+                            style="display: block;height: 110px;padding-top: 30px;"></div>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="margin: 0 auto;display: block;">Agregar
+                        stand</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+    <style type="text/css">
+        .dz-default.dz-message {
+            text-align: center;
+        }
+    </style>

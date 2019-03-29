@@ -23,6 +23,7 @@ _::define_controller('events_stands', function(){
     _::$view->assign('js_file', 'eventos'); // cargar js, el codigo que lo hace está en el footer.html
     $id_evento = _::$get['page']->int();
     _::$view->assign('stands', stands::getAllObjects('id_stand', 'WHERE id_event = ?', array($id_evento)));
+    _::$view->assign('event_id', $id_evento);
     _::$view->show('stands');
 });
 
@@ -36,13 +37,6 @@ _::define_controller('events_checkins', function() {
 });
 
 _::define_controller('event_form', function(){
-    _::$view->assign('menu_seleccionado', 'events');
-    _::$view->assign('sub_menu_seleccionado', 'checkins');
-
-    _::$view->show('event_form');
-});
-
-_::define_controller('stand_form', function(){
     _::$view->assign('menu_seleccionado', 'events');
     _::$view->assign('sub_menu_seleccionado', 'checkins');
     if(_::$isPost) {
@@ -66,14 +60,42 @@ _::define_controller('stand_form', function(){
         $evento->location_description = (string) _::$post['desc_location'];
         // guardamos el evento
         $evento->save();
-        // Habría que indicar que se guardó
+        // TODO: Habría que indicar que se guardó
         // redirigimos a la lista de eventos
         _::redirect('/events_all', false);
+    } else {
+        _::$view->show('event_form');
+    }
+
+});
+
+_::define_controller('stand_form', function(){
+    _::$view->assign('menu_seleccionado', 'events');
+    _::$view->assign('sub_menu_seleccionado', 'checkins');
+    $idEvento = _::$get['page']->int();
+    if(_::$isPost) {
+        // TODO: validaciones
+        $stand = new stands();
+        $stand->id_event = $idEvento;
+        $stand->name = (string)_::$post['nombre'];
+        // buscamos a ver si encontramos el id del organizador.
+        $email_organizador = (string)_::$post['organizador'];
+        $user = users::findByEmail($email_organizador);
+        if(!$user->void) {
+            $stand->id_user_organizer = $user->id_user;
+        }
+        // $stand->logo = ''; // TODO: pendiente
+        $stand->gancho = (string) _::$post['gancho']; // TODO: PENDIENTE
+        $stand->save();
+        // TODO: Habría que indicar que se guardó
+        // redirigimos a la lista de eventos
+        _::redirect('/events_stands/'.$idEvento, false);
     } else {
         _::$view->show('stand_form');
     }
     
 });
+
 
 // PETICIONES AJAX //
 

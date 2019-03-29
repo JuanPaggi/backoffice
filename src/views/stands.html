@@ -1,7 +1,11 @@
 <section class="content">
     <header class="content__title">
         <h1>Lista eventos</h1>
-<!-- 
+
+        <div class="actions">
+            <a href="/stand_form/{$event_id}" class="actions__item zmdi zmdi-plus-circle"></a>
+        </div>
+        <!-- 
         <div class="actions">
             <a href="" class="actions__item zmdi zmdi-trending-up"></a>
             <a href="" class="actions__item zmdi zmdi-check-all"></a>
@@ -19,7 +23,8 @@
     <div class="card">
         <div class="card-body">
             <h4 class="card-title">Stands</h4>
-            <h6 class="card-subtitle">Puede visualizar, agregar y eliminar stands, además de ver los usuarios que realizaron check-in.</h6>
+            <h6 class="card-subtitle">Puede visualizar, agregar y eliminar stands, además de ver los usuarios que
+                realizaron check-in.</h6>
 
             <div class="table-responsive">
                 <table id="data-table" class="table table-bordered">
@@ -46,8 +51,10 @@
                                     <i data-toggle="dropdown" class="zmdi zmdi-more-vert"></i>
                                     <div class="dropdown-menu dropdown-menu-right">
                                         <a href="/events_checkins/{$stand->id_stand}" class="dropdown-item">Checkins</a>
-                                        <a href="/events_stand_form/{$stand->id_stand}" class="dropdown-item eliminarStands" data-id="{$stand->id_stand}">Editar</a>
-                                        <a href="#" data-id="{$stand->id_stand}" class="dropdown-item" style="background-color: pink">Eliminar</a>
+                                        <a href="/events_stand_form/{$stand->id_stand}"
+                                            class="dropdown-item eliminarStands" data-id="{$stand->id_stand}">Editar</a>
+                                        <a href="#" data-id="{$stand->id_stand}" class="dropdown-item"
+                                            style="background-color: pink">Eliminar</a>
                                     </div>
                                 </div>
                             </td>
