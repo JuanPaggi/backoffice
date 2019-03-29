@@ -10,4 +10,4 @@ _::declare_controller('configs', 'configs');
 
 // peticiones ajax
 _::declare_controller('users', 'jx_user_unlock', 'jx_user_rem_admin', 'jx_user_add_admin', 'jx_user_delete');
-_::declare_controller('events', 'jx_event_delete', 'jx_event_delete_stand', 'jx_event_delete_code');
+_::declare_controller('events', 'jx_event_delete', 'jx_event_delete_stand', 'jx_event_delete_code', 'jx_event_codegen');

@@ -12,8 +12,10 @@ _::define_controller('code_gen', function(){
     _::$view->assign('menu_seleccionado', 'events');
     _::$view->assign('sub_menu_seleccionado', 'all');
     _::$view->assign('js_file', 'eventos'); // cargar js, el codigo que lo hace está en el footer.html
-    $codigos = codigos_externos::getCodes(_::$get['page']->int());
+    $idEvento = _::$get['page']->int();
+    $codigos = codigos_externos::getCodes($idEvento);
     _::$view->assign('codes', $codigos);
+    _::$view->assign('event_id', $idEvento);
     _::$view->show('codes');
     
 });
@@ -141,4 +143,22 @@ _::define_controller('jx_event_delete_code', function() {
         _::$view->ajax(array('status' => 'err'));
     }
     
+});
+
+_::define_controller('jx_event_codegen', function(){
+    $eventoID = _::$post['evento']->int();
+    $cantidad = _::$post['cantidad']->int();
+    $evento = new events($eventoID);
+    if(!$evento->void) {
+        for($i = 0; $i<$cantidad; $i++){
+            $uuid = strtoupper(split(md5(uniqid('BYO', true)+mt_rand(100,999)), 10)[0]);
+            $ce = new codigos_externos();
+            $ce->id_event = $eventoID;
+            $ce->codigo_acceso = $uuid;
+            $ce->save();
+        }
+        _::$view->ajax(array('status' => 'ok'));
+    } else {
+        _::$view->ajax(array('status' => 'err'));
+    }
 });
