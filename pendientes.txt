@@ -1,4 +1,10 @@
-Los "TODO"
+Probar alta evento y alta stand.
+
+falta carteles de errores en las altas de eventos y stands.
+
+falta editar eventos y stands.
+
+Los "TODO" que hay en el código
 
 cambiar contraseña: HEADER.HTML y pantalla
 <!-- <a class="dropdown-item" href="/password_change">Cambiar contraseña</a> -->
@@ -13,3 +19,5 @@ falta enviar el mensaje al usuario. (users.html, perfil.html)
 
 falta el marcar posiciones del usuario en el mapa: (perfil.html)
 <!-- <a href="/dashboard" class="actions__item zmdi zmdi-pin"></a> -->
+
+falta imagen upload de los logos.

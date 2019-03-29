@@ -1,0 +1,74 @@
+<section class="content">
+    <div class="content__inner">
+        <header class="content__title">
+            <h1>Agregar evento</h1>
+        </header>
+
+        <div class="card">
+            <div class="card-body">
+                <form method="post">
+                    <div class="form-group">
+                        <h3 class="card-body__title">Nombre del evento</h3>
+                        <input type="text" class="form-control" placeholder="Nombre" name="nombre">
+                        <i class="form-group__bar"></i>
+                    </div>
+                    <div class="form-group">
+                        <h3 class="card-body__title">Nombre del lugar</h3>
+                        <input type="text" class="form-control" placeholder="La rural" name="nombre_lugar">
+                        <i class="form-group__bar"></i>
+                    </div>
+                    <div class="form-group">
+                        <h3 class="card-body__title">Descripcion de la ubicacion</h3>
+                        <input type="text" class="form-control" placeholder="Av 14 de julio" name="desc_location">
+                        <i class="form-group__bar"></i>
+                    </div>
+                    <div class="form-group">
+                        <label>Inicio</label>
+                        <input type="text" class="form-control input-mask" name="fechaInicio" data-mask="00/00/0000"
+                            placeholder="eg: 23/05/2019">
+                        <i class="form-group__bar"></i>
+                    </div>
+                    <div class="form-group">
+                        <label>Fin</label>
+                        <input type="text" class="form-control input-mask" name="fechaFin" data-mask="00/00/0000"
+                            placeholder="eg: 23/05/2019">
+                        <i class="form-group__bar"></i>
+                    </div>
+                    <div class="form-group">
+                        <h3 class="card-body__title">URL de pago</h3>
+                        <input type="text" class="form-control" placeholder="http://mercadopago/4qs5Z" name="url">
+                        <i class="form-group__bar"></i>
+                    </div>
+                    <div class="form-group">
+                        <h3 class="card-body__title">Radio en metros</h3>
+                        <input type="number" class="form-control" placeholder="15" name="radio">
+                        <i class="form-group__bar"></i>
+                    </div>
+                    <div class="form-group">
+                        <h3 class="card-body__title">Latitud</h3>
+                        <input type="text" class="form-control" name="latitud" placeholder="-1.6725349">
+                        <i class="form-group__bar"></i>
+                    </div>
+                    <div class="form-group">
+                        <h3 class="card-body__title">Longitud</h3>
+                        <input type="text" class="form-control" name="longitud" placeholder="1.6725349">
+                        <i class="form-group__bar"></i>
+                    </div>
+                    <div class="form-group">
+                        <h3 class="card-body__title">Logo</h3>
+                        <div class="dropzone" id="dropzone-upload"
+                            style="display: block;height: 110px;padding-top: 30px;"></div>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="margin: 0 auto;display: block;">Agregar
+                        evento</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+    <style type="text/css">
+        .dz-default.dz-message {
+            text-align: center;
+        }
+    </style>
