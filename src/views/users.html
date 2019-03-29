@@ -1,0 +1,90 @@
+<section class="content">
+    <header class="content__title">
+        <h1>DATA TABLES</h1>
+
+        <div class="actions">
+            <a href="" class="actions__item zmdi zmdi-trending-up"></a>
+            <a href="" class="actions__item zmdi zmdi-check-all"></a>
+
+            <div class="dropdown actions__item">
+                <i data-toggle="dropdown" class="zmdi zmdi-more-vert"></i>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <a href="" class="dropdown-item">Refresh</a>
+                    <a href="" class="dropdown-item">Manage Widgets</a>
+                    <a href="" class="dropdown-item">Settings</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Basic Example</h4>
+            <h6 class="card-subtitle">Using the most basic table markup, here’s how <code>.table</code> -based tables
+                look in Bootstrap.</h6>
+
+            <div class="table-responsive">
+                <table id="data-table" class="table table-bordered">
+                    <thead class="thead-default">
+                        <tr>
+                            <th>#</th>
+                            <th>Nombre</th>
+                            <th>Email</th>
+                            <th>Ultimo acceso</th>
+                            <th>Fecha registro</th>
+                            <th>Linkedin</th>
+                            <th>Premium</th>
+                            <th>Bloqueado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {loop=$users as $user}
+                        <tr style="{if="$user->is_admin"}font-weight: bolder;{/if} {if="$user->locked"}background-color: pink;{/if}">
+                            <th scope="row">{$user->id_user}</th>
+                            <td>{$user->first_name} {$user->last_name}</td>
+                            <td>{$user->email}}</td>
+                            <td>{$user->last_login}</td>
+                            <td>{$user->signup_date}</td>
+                            <td>{$user->linkedin_id}</td>
+                            <td>
+                                {if="$user->is_premium"}
+                                <b>SI</b>
+                                {else}
+                                NO
+                                {/if}
+                            </td>
+                            <td>
+                                {if="$user->locked"}
+                                <b>SI</b>
+                                {else}
+                                NO
+                                {/if}
+                            </td>
+                            <td>
+                                <div class="dropdown actions__item">
+                                    <i data-toggle="dropdown" class="zmdi zmdi-more-vert"></i>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a href="/users_profile/{$user->id_user}" class="dropdown-item">Ver perfil</a>
+
+                                        {if="$user->locked"}
+                                        <a href="#" class="dropdown-item">Desbloquear</a>
+                                        {/if}
+
+                                        {if="$user->is_admin"}
+                                        <a href="#" class="dropdown-item">Quitar administrador</a>
+                                        {else}
+                                        <a href="#" class="dropdown-item">Hacer administrador</a>
+                                        {/if}
+
+                                        <a href="#" class="dropdown-item">Enviar mensaje</a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        {/loop}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
