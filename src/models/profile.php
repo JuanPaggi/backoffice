@@ -17,4 +17,14 @@ class profile extends table
     public $current_position = null;
     public $company_name = null;
 
+    // SINGLETON PARA VISTA:
+    public $country_object;
+    public function getPais() {
+        if(empty($this->country_object)) {
+            $this->country_object = new countries($this->country);
+        }
+        return $this->country_object;
+    }
+    // fin singleton para obtener sub-pais
+
 }
