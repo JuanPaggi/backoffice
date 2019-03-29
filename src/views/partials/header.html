@@ -384,13 +384,14 @@
                             </ul>
                         </li>
 
-                        <li class="navigation__sub {if="$menu_seleccionado == 'events'"}navigation__sub--active{/if}">
+                        <!-- <li class="navigation__sub {if="$menu_seleccionado == 'events'"}navigation__sub--active{/if}">
                             <a href=""><i class="zmdi zmdi-calendar"></i> Eventos</a>
                             <ul>
                                 <li {if="$sub_menu_seleccionado == 'all'"}class="navigation__active"{/if}><a href="/events_all">Todos</a></li>
                                 <li {if="$sub_menu_seleccionado == 'generator'"}class="navigation__active"{/if}><a href="/code_gen">Generador de códigos</a></li>
                             </ul>
-                        </li>
+                        </li> -->
+                        <li class="navigation{if="$menu_seleccionado == 'events'"}__active{/if}"><a href="/events_all"><i class="zmdi zmdi-calendar"></i> Eventos</a></li>
 
                         <li class="navigation__sub  {if="$menu_seleccionado == 'chats'"}navigation__sub--active{/if}">
                             <a href=""><i class="zmdi zmdi-comments"></i> Chats</a>
@@ -400,7 +401,7 @@
                             </ul>
                         </li>
 
-                        <li class="navigation{if="$menu_seleccionado == 'positions'"}__active{/if}"><a href="/positions"><i class="zmdi zmdi-pin"></i> Posicionamientos 24hs</a></li>
+                        <!-- <li class="navigation{if="$menu_seleccionado == 'positions'"}__active{/if}"><a href="/positions"><i class="zmdi zmdi-pin"></i> Posicionamientos 24hs</a></li> -->
 
                         <li class="navigation{if="$menu_seleccionado == 'config'"}__active{/if}"><a href="/configs"><i class="zmdi zmdi-wrench"></i> Configuraciones generales</a></li>
                         

@@ -11,4 +11,8 @@ class codigos_externos extends table
     public $codigo_acceso = null;
     public $id_event = null;
 
+    public function getCodes($evento){
+        return self::getAll('LEFT JOIN codigos_externos_usados AS ceu ON ceu.id_codigo = codigos_externos.id_codigo WHERE id_event = ?', array($evento));
+    }
+
 }

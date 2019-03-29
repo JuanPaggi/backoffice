@@ -7,6 +7,10 @@ _::define_controller('events_all', function(){
     _::$view->show('eventos');
 });
 _::define_controller('code_gen', function(){
+    // no se recibió el id
+    $codigos = codigos_externos::getCodes(_::$get['page']->int());
+    _::$view->assign('codes', $codigos);
+    _::$view->show('codes');
     
 });
 _::define_controller('events_stands', function(){

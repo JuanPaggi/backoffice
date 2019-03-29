@@ -1,0 +1,67 @@
+<section class="content">
+    <header class="content__title">
+        <h1>Conversaciones</h1>
+<!-- 
+        <div class="actions">
+            <a href="" class="actions__item zmdi zmdi-trending-up"></a>
+            <a href="" class="actions__item zmdi zmdi-check-all"></a>
+
+             <div class="dropdown actions__item">
+                <i data-toggle="dropdown" class="zmdi zmdi-more-vert"></i>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <a href="" class="dropdown-item">Refresh</a>
+                    <a href="" class="dropdown-item">Manage Widgets</a>
+                    <a href="" class="dropdown-item">Settings</a>
+                </div>
+            </div> 
+        </div> -->
+    </header>
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Chats</h4>
+            <h6 class="card-subtitle">Puede observar la lista de conversaciones iniciadas entre dos usuarios de la aplicación.</h6>
+
+            <div class="table-responsive">
+                <table id="data-table" class="table table-bordered">
+                    <thead class="thead-default">
+                        <tr>
+                            <th>Ultimo Mensaje ID</th>
+                            <th>Usuario iniciador</th>
+                            <th>Usuario aceptador</th>
+                            <th>Ultimo mensaje</th>
+                            <th>Fecha ultimo mensaje</th>
+                            <th>Visto</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {loop=$conversaciones as $conversacion}
+                        <tr>
+                            <th scope="row">{$conversacion->last_message_id}</th>
+                            <td><a href="/users_profile/{$conversacion->id_user_sender}">{$conversacion->getUserSender()->email}</a></td>
+                            <td><a href="/users_profile/{$conversacion->id_user_requester}">{$conversacion->getUserRequester()->email}</a></td>
+                            <td>{$conversacion->getMessage()->messages}</td>
+                            <td>{$conversacion->getMessage()->fecha}</td>
+                            <td>
+                                {if="$conversacion->getMessage()->is_viewed()"}
+                                Si
+                                {else}
+                                No
+                                {/if}
+                            </td>
+                            <td>
+                                <div class="dropdown actions__item">
+                                    <i data-toggle="dropdown" class="zmdi zmdi-more-vert"></i>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a href="/conversacion/{$conversacion->last_message_id}" class="dropdown-item">Ver conversacion</a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        {/loop}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
