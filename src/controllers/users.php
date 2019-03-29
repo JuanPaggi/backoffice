@@ -21,12 +21,12 @@ _::define_controller('users_free', function(){
 _::define_controller('users_linkedin', function(){
     _::$view->assign('menu_seleccionado', 'users');
     _::$view->assign('sub_menu_seleccionado', 'linkedin');
-    _::$view->assign('users', users::getAllObjects('id_user', 'WHERE linkedin_id <> null'));
+    _::$view->assign('users', users::getAllObjects('id_user', 'WHERE linkedin_id IS NOT NULL'));
     _::$view->show('users');
 });
 _::define_controller('users_bloqueados', function(){
     _::$view->assign('menu_seleccionado', 'users');
     _::$view->assign('sub_menu_seleccionado', 'locked');
-    _::$view->assign('users', users::getAllObjects('id_user', 'WHERE locked == TRUE'));
+    _::$view->assign('users', users::getAllObjects('id_user', 'WHERE locked = TRUE'));
     _::$view->show('users');
 });
