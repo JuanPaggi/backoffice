@@ -49,13 +49,43 @@ _::define_controller('users_profile', function(){
 
 _::define_controller('jx_user_unlock', function() {
     $id = _::$post['id']->int();
+    $user = new users($id);
+    if(!$user->void){
+        $user->locked = false;
+        $user->save();
+        _::$view->ajax(array('status' => 'ok'));
+    } else {
+        _::$view->ajax(array('status' => 'err'));
+    }
 });
 _::define_controller('jx_user_rem_admin', function() {
     $id = _::$post['id']->int();
+    $user = new users($id);
+    if(!$user->void){
+        $user->is_admin = false;
+        $user->save();
+        _::$view->ajax(array('status' => 'ok'));
+    } else {
+        _::$view->ajax(array('status' => 'err'));
+    }
 });
 _::define_controller('jx_user_add_admin', function() {
     $id = _::$post['id']->int();
+    $user = new users($id);
+    if(!$user->void){
+        $user->is_admin = true;
+        $user->save();
+        _::$view->ajax(array('status' => 'ok'));
+    } else {
+        _::$view->ajax(array('status' => 'err'));
+    }
 });
 _::define_controller('jx_user_delete', function() {
     $id = _::$post['id']->int();
+    $user = new users($id);
+    if(!$user->void){
+
+    } else {
+        _::$view->ajax(array('status' => 'err'));
+    }
 });
