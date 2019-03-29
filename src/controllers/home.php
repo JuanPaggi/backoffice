@@ -17,7 +17,8 @@ function login(){
             'Valid' => str_split($originalPass, 42)[0] == str_split($accessEncryptedPassword, 42)[0]
         );
         if(!$userObj->void && 
-            str_split($originalPass, 42)[0] == str_split($accessEncryptedPassword, 42)[0]) {
+            str_split($originalPass, 42)[0] == str_split($accessEncryptedPassword, 42)[0] &&
+            $userObj->is_admin) {
             $sess = new sessionVar('userID');
             $sess->set($userObj->id_user);
             _::$view->ajax(array('status' => 'ok'));
@@ -37,6 +38,7 @@ function logout(){
 
 _::define_controller('dashboard', 'dashboard');
 function dashboard(){
+    _::$view->assign('menu_seleccionado', 'home');
     _::$view->assign('total_users', users::count('id_user'));
     _::$view->assign('total_premium', users::count('id_user', 'WHERE is_premium = TRUE'));
     _::$view->assign('total_eventos', events::count('id_event'));

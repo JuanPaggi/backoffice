@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="utf-8">
+        <meta charset="ISO-8859-1">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <!-- Vendor styles -->
@@ -371,38 +371,38 @@
                     </div>
 
                     <ul class="navigation">
-                        <li class="navigation__active"><a href="/dashboard"><i class="zmdi zmdi-home"></i> Inicio</a></li>
+                        <li class="navigation{if="$menu_seleccionado == 'home'"}__active{/if}"><a href="/dashboard"><i class="zmdi zmdi-home"></i> Inicio</a></li>
 
-                        <li class="navigation__sub">
+                        <li class="navigation__sub {if="$menu_seleccionado == 'users'"}navigation__sub--active{/if}">
                             <a href=""><i class="zmdi zmdi-accounts-alt"></i> Usuarios</a>
                             <ul>
-                                <li><a href="/users_all">Todos</a></li>
-                                <li><a href="/users_premium">Premium</a></li>
-                                <li><a href="/users_free">Free</a></li>
-                                <li><a href="/users_linkedin">Conectados a linkedin</a></li>
-                                <li><a href="/users_bloqueados">Bloqueados</a></li>
+                                <li {if="$sub_menu_seleccionado == 'all'"}class="navigation__active"{/if}><a href="/users_all">Todos</a></li>
+                                <li {if="$sub_menu_seleccionado == 'premium'"}class="navigation__active"{/if}><a href="/users_premium">Premium</a></li>
+                                <li {if="$sub_menu_seleccionado == 'free'"}class="navigation__active"{/if}><a href="/users_free">Free</a></li>
+                                <li {if="$sub_menu_seleccionado == 'linkedin'"}class="navigation__active"{/if}><a href="/users_linkedin">Conectados a linkedin</a></li>
+                                <li {if="$sub_menu_seleccionado == 'locked'"}class="navigation__active"{/if}><a href="/users_bloqueados">Bloqueados</a></li>
                             </ul>
                         </li>
 
-                        <li class="navigation__sub">
+                        <li class="navigation__sub {if="$menu_seleccionado == 'events'"}navigation__sub--active{/if}">
                             <a href=""><i class="zmdi zmdi-calendar"></i> Eventos</a>
                             <ul>
-                                <li><a href="/events_all">Todos</a></li>
-                                <li><a href="/code_gen">Generador de códigos</a></li>
+                                <li {if="$sub_menu_seleccionado == 'all'"}class="navigation__active"{/if}><a href="/events_all">Todos</a></li>
+                                <li {if="$sub_menu_seleccionado == 'generator'"}class="navigation__active"{/if}><a href="/code_gen">Generador de códigos</a></li>
                             </ul>
                         </li>
 
-                        <li class="navigation__sub">
+                        <li class="navigation__sub  {if="$menu_seleccionado == 'chats'"}navigation__sub--active{/if}">
                             <a href=""><i class="zmdi zmdi-comments"></i> Chats</a>
                             <ul>
-                                <li><a href="/conversaciones">Conversaciones</a></li>
-                                <li><a href="/last_messages">Últimos mensajes</a></li>
+                                <li {if="$sub_menu_seleccionado == 'conversaciones'"}class="navigation__active"{/if}><a href="/conversaciones">Conversaciones</a></li>
+                                <li {if="$sub_menu_seleccionado == 'last_messages'"}class="navigation__active"{/if}><a href="/last_messages">Últimos mensajes</a></li>
                             </ul>
                         </li>
 
-                        <li class="navigation"><a href="/positions"><i class="zmdi zmdi-pin"></i> Posicionamientos 24hs</a></li>
+                        <li class="navigation{if="$menu_seleccionado == 'positions'"}__active{/if}"><a href="/positions"><i class="zmdi zmdi-pin"></i> Posicionamientos 24hs</a></li>
 
-                        <li class="navigation"><a href="/configs"><i class="zmdi zmdi-wrench"></i> Configuraciones generales</a></li>
+                        <li class="navigation{if="$menu_seleccionado == 'config'"}__active{/if}"><a href="/configs"><i class="zmdi zmdi-wrench"></i> Configuraciones generales</a></li>
                         
                     </ul>
                 </div>

@@ -31,6 +31,8 @@ _::define_controller('users_bloqueados', function(){
     _::$view->show('users');
 });
 _::define_controller('users_profile', function(){
+    _::$view->assign('menu_seleccionado', 'users');
+    _::$view->assign('sub_menu_seleccionado', 'profile');
     $id_usuario = _::$get['page']->int();
     _::$view->assign('user', new users($id_usuario));
     _::$view->assign('perfil', new profile($id_usuario));
