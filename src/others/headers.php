@@ -6,6 +6,8 @@ _::define_autocall(function(){
     {
 		// header
         if(isset(_::$session['userID'])) {
+
+            _::$view->assign('user', new users(_::$session['userID']->int()));
     		_::$view->assign('menu_pos', 'inicio');
     		_::$view->assign('submenu', '');
     		//_::$view->assign('meAdm', new administradores(_::$session['userID']->int()));
