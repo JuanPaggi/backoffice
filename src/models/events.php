@@ -19,8 +19,11 @@ class events extends table
     public $location_description = null;
 
     public function isFinished() {
-        // TODO: validar fecha
-        return false;
+        $dtObject= new DateTime($this->end_date);
+        return ($dtObject->getTimestamp() < time());
+    
     }
+
+   
 
 }

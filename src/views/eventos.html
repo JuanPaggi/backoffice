@@ -38,14 +38,14 @@
                     </thead>
                     <tbody>
                         {loop=$eventos as $evento}
-                        <tr style="{if="$evento->isFinished()"}background-color: pink;{/if}">
+                        <tr {if="$evento->isFinished()"}style="background-color: pink;"{/if}>
                             <th scope="row">{$evento->id_event}</th>
                             <td>{$evento->name}</td>
                             <td><img src="{$evento->logo}" width="50" height="50" /></td>
                             <td>{if="empty($evento->url)"}Sin cargar{else}<a href="{$evento->url}" target="_blank">Ver</a>{/if}</td>
                             <td>{$evento->radio}kms</td>
                             <td>{$evento->nombre_lugar}</td>
-                            <td>{$evento->start_date} {$evento->end_date}</td>
+                            <td>{$evento->start_date} {$evento->end_date} End : {$evento->isFinishedN()} Microt: {$evento->isFinishedM()}</td>
                             <td>
                                 <div class="dropdown actions__item">
                                     <i data-toggle="dropdown" class="zmdi zmdi-more-vert"></i>
