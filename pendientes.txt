@@ -1,4 +1,3 @@
-* Probar alta evento y alta stand. (corregir cualquier error)
 
 * revisar por que no anda el generador de codigos de acceso.
 
@@ -24,3 +23,5 @@ y la pantalla entera faltaría.
 <!-- <a href="/dashboard" class="actions__item zmdi zmdi-pin"></a> -->
 
 * falta imagen upload de los logos.
+
+=> En agregar stand parece que no agrega el organizador.

@@ -38,4 +38,9 @@ $(document).ready(function(){
         });
     });
 
+    $('#uploaderFile').click(function(){
+        $('#file_input').trigger('click');
+    });
+
+
 });

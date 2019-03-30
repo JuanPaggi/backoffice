@@ -41,12 +41,17 @@ _::define_controller('events_checkins', function() {
 _::define_controller('event_form', function(){
     _::$view->assign('menu_seleccionado', 'events');
     _::$view->assign('sub_menu_seleccionado', 'checkins');
+    _::$view->assign('js_file', 'eventos');
     if(_::$isPost) {
         // crear evento:
         // TODO: validaciones
         $evento = new events();
-        $evento->start_date = (string)_::$post['fechaInicio'];
-        $evento->end_date = (string)_::$post['fechaFin'];
+        $inicio = explode('/', (string)_::$post['fechaInicio']);
+        $fin = explode('/', (string)_::$post['fechaFin']);
+        $sdate = new DateTime($inicio[1].'/'.$inicio[0].'/'.$inicio[2]); // m/d/Y
+        $edate = new DateTime($fin[1].'/'.$fin[0].'/'.$fin[2]); // m/d/Y
+        $evento->start_date = $sdate->format('Y-m-d H:i:s');
+        $evento->end_date = $edate->format('Y-m-d H:i:s');
         $evento->name = (string) _::$post['nombre'];
 
         $gde = new gps_data_events();
@@ -55,13 +60,13 @@ _::define_controller('event_form', function(){
         $id_gps_data = $gde->save(); // así se obtiene el id incremental del ultimo insertado
         $evento->id_gps_record = $id_gps_data;
 
-        //$evento->logo = (string) _::$post['']; // PENDIENTE
+        $evento->logo = (string)_::$post['file_hash'];
         $evento->url = (string) _::$post['url'];
         $evento->radio = _::$post['radio']->int();
         $evento->nombre_lugar = (string) _::$post['nombre_lugar'];
         $evento->location_description = (string) _::$post['desc_location'];
-        // guardamos el evento
         $evento->save();
+
         // TODO: Habría que indicar que se guardó
         // redirigimos a la lista de eventos
         _::redirect('/events_all', false);
@@ -74,6 +79,7 @@ _::define_controller('event_form', function(){
 _::define_controller('stand_form', function(){
     _::$view->assign('menu_seleccionado', 'events');
     _::$view->assign('sub_menu_seleccionado', 'checkins');
+    _::$view->assign('js_file', 'eventos');
     $idEvento = _::$get['page']->int();
     if(_::$isPost) {
         // TODO: validaciones
@@ -86,7 +92,7 @@ _::define_controller('stand_form', function(){
         if(!$user->void) {
             $stand->id_user_organizer = $user->id_user;
         }
-        // $stand->logo = ''; // TODO: pendiente
+        $stand->logo = (string)_::$post['file_hash'];
         $stand->gancho = (string) _::$post['gancho']; // TODO: PENDIENTE
         $stand->save();
         // TODO: Habría que indicar que se guardó

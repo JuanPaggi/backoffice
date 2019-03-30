@@ -56,8 +56,13 @@
                     </div>
                     <div class="form-group">
                         <h3 class="card-body__title">Logo</h3>
-                        <div class="dropzone" id="dropzone-upload"
-                            style="display: block;height: 110px;padding-top: 30px;"></div>
+                        <input name="file" type="file" style="display: none" id="file_input" onchange='openFile(event)'/>
+                        <input name="file_hash" type="hidden" id="file_hash"/>
+                        <div class="dropBlock" id="uploaderFile">
+                            <div class="dropButton">
+                                Click para seleccionars
+                            </div>
+                        </div>
                     </div>
                     <button type="submit" class="btn btn-primary" style="margin: 0 auto;display: block;">Agregar
                         evento</button>
@@ -66,9 +71,57 @@
         </div>
 
     </div>
-
+    <script type="text/javascript">
+        function openFile(event){
+            var input = event.target;
+            var reader = new FileReader();
+            reader.onload = function(){
+                var dataURL = reader.result;
+                var output = document.getElementById('file_hash');
+                output.value = dataURL;
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    </script>
     <style type="text/css">
         .dz-default.dz-message {
             text-align: center;
+        }
+        .dropBlock {
+            border: 0;
+            background-color: #f6f6f6;
+            border-radius: 2px;
+            transition: border-color .3s,background-color .3s;
+            min-height: 50px;
+            position: relative;
+            text-align: center;
+            padding: 25px;
+        }
+        .dropBlock:hover {
+            background-color: #eee;
+        }
+        .dropButton {
+            font-size: 1.2rem;
+            color: #9ca0a5;
+            display: inline-block;
+            border-radius: 2px;
+            transition: color .3s,box-shadow,.3s;
+            padding: .5rem 1.4rem .8rem;
+            background-color: #FFF;
+            box-shadow: 0 4px 5px rgba(0,0,0,.1);
+            cursor: pointer;
+        }
+        .dropButton::before {
+            content: '\f21e';
+            font-family: Material-Design-Iconic-Font;
+            font-size: 1.6rem;
+            display: inline-block;
+            position: relative;
+            top: 2px;
+            margin-right: .8rem;
+        }
+        .dropBlock:hover .dropButton {
+            color: #747a80;
+            
         }
     </style>
