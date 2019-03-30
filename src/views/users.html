@@ -42,8 +42,8 @@
                             <th scope="row">{$user->id_user}</th>
                             <td>{$user->first_name} {$user->last_name}</td>
                             <td>{$user->email}</td>
-                            <td>{$user->last_login}</td>
-                            <td>{$user->signup_date}</td>
+                            <td>{$user->getFormattedLastLogin()}</td>
+                            <td>{$user->getFormattedSignupDate()}</td>
                             <td>{$user->linkedin_id}</td>
                             <td>
                                 {if="$user->is_premium"}

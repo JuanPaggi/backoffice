@@ -32,4 +32,14 @@ class users extends table
         return self::getUniqueObject('id_user', 'WHERE email = ?', array($email));
     }
 
+    public function getFormattedSignupDate() {
+        $date = new DateTime($this->signup_date);
+        return $date->format('d/m/Y'); // Y-m-d H:i:s
+    }
+
+    public function getFormattedLastLogin() {
+        $date = new DateTime($this->last_login);
+        return $date->format('d/m/Y'); // Y-m-d H:i:s
+    }
+
 }
