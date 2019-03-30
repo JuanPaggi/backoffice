@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    $('.unlockUser').click(function(e){
+    $('section').on('click', '.unlockUser', function(e){
         e.preventDefault();
         e.stopPropagation();
         let idUser = $(this).data('id');
@@ -8,7 +8,7 @@ $(document).ready(function(){
             $.post('/jx_user_unlock', {id: idUser}, function(){window.top.location.reload();});
         }
     });
-    $('.removeAdmin').click(function(e){
+    $('section').on('click', '.removeAdmin', function(e){
         e.preventDefault();
         e.stopPropagation();
         let idUser = $(this).data('id');
@@ -16,7 +16,7 @@ $(document).ready(function(){
             $.post('/jx_user_rem_admin', {id: idUser}, function(){window.top.location.reload();});
         }
     });
-    $('.doAdmin').click(function(e){
+    $('section').on('click', '.doAdmin', function(e){
         e.preventDefault();
         e.stopPropagation();
         let idUser = $(this).data('id');
@@ -24,7 +24,7 @@ $(document).ready(function(){
             $.post('/jx_user_add_admin', {id: idUser}, function(){window.top.location.reload();});
         }
     });
-    $('.remPremium').click(function(e){
+    $('section').on('click', '.remPremium', function(e){
         e.preventDefault();
         e.stopPropagation();
         let idUser = $(this).data('id');
@@ -32,7 +32,7 @@ $(document).ready(function(){
             $.post('/jx_user_rem_premium', {id: idUser}, function(){window.top.location.reload();});
         }
     });
-    $('.doPremium').click(function(e){
+    $('section').on('click', '.doPremium', function(e){
         e.preventDefault();
         e.stopPropagation();
         let idUser = $(this).data('id');
@@ -40,7 +40,7 @@ $(document).ready(function(){
             $.post('/jx_user_do_premium', {id: idUser}, function(){window.top.location.reload();});
         }
     });
-    $('.deleteUser').click(function(e){
+    $('section').on('click', '.deleteUser', function(e){
         e.preventDefault();
         e.stopPropagation();
         let idUser = $(this).data('id');
