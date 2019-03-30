@@ -24,6 +24,14 @@ class events extends table
     
     }
 
-   
+    public function startDate() {
+        $date = new DateTime($this->start_date);
+        return $date->format('d/m/Y H:i'); // Y-m-d H:i:s
+    }
+
+    public function endDate() {
+        $date = new DateTime($this->end_date);
+        return $date->format('d/m/Y H:i'); // Y-m-d H:i:s
+    }
 
 }
