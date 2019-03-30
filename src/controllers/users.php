@@ -40,7 +40,7 @@ _::define_controller('users_profile', function(){
     _::$view->assign('sub_menu_seleccionado', 'profile');
     _::$view->assign('js_file', 'users'); // cargar js, el codigo que lo hace está en el footer.html
     $id_usuario = _::$get['page']->int();
-    _::$view->assign('user', new users($id_usuario));
+    _::$view->assign('user_profile', new users($id_usuario));
     _::$view->assign('perfil', new profile($id_usuario));
     _::$view->show('perfil');
 });

@@ -1,7 +1,7 @@
 <section class="content">
     <div class="content__inner content__inner--sm">
         <header class="content__title">
-            <h1>{$user->first_name} {$user->last_name}</h1>
+            <h1>{$user_profile->first_name} {$user_profile->last_name}</h1>
             <small>{$perfil->headline}</small>
 
             <div class="actions">
@@ -10,7 +10,7 @@
                     <i data-toggle="dropdown" class="zmdi zmdi-more-vert"></i>
                     <div class="dropdown-menu dropdown-menu-right">
                         <!-- <a href="" class="dropdown-item">Enviar mensaje</a> -->
-                        <a href="" class="dropdown-item deleteUser" data-id="{$user->id_user}" style="background-color: pink;">Eliminar</a>
+                        <a href="" class="dropdown-item deleteUser" data-id="{$user_profile->id_user}" style="background-color: pink;">Eliminar</a>
                     </div>
                 </div>
             </div>
@@ -18,16 +18,16 @@
 
         <div class="card profile">
             <div class="profile__img">
-                <img src="{$user->picture_url}" alt="">
+                <img src="{$user_profile->picture_url}" alt="">
             </div>
 
             <div class="profile__info">
-                <p>Busco: {$user->busco}</p>
-                <p>Ofrezco: {$user->ofrezco}</p>
+                <p>Busco: {$user_profile->busco}</p>
+                <p>Ofrezco: {$user_profile->ofrezco}</p>
 
                 <ul class="icon-list">
                     <!-- <li><i class="zmdi zmdi-google-old"></i> {$user->fcm_token}</li> -->
-                    <li><i class="zmdi zmdi-email"></i> {$user->email}</li>
+                    <li><i class="zmdi zmdi-email"></i> {$user_profile->email}</li>
                     <li><i class="zmdi zmdi-linkedin"></i> {$perfil->linkedin_url}</li>
                 </ul>
             </div>
@@ -53,7 +53,7 @@
 
         <div class="card">
             <div class="card-body">
-                <h4 class="card-body__title mb-4">Acerca de {$user->first_name}</h4>
+                <h4 class="card-body__title mb-4">Acerca de {$user_profile->first_name}</h4>
 
                 <p>{$perfil->summary}</p>
 
@@ -65,7 +65,7 @@
                     <li>Industria: {$perfil->industry}</li>
                     <!-- <li>Pais: {$perfil->getPais()->name}</li> -->
                     <li>Ubicacion: {$perfil->location}</li>
-                    <li>Linkedin ID: {$user->linkedin_id}</li>
+                    <li>Linkedin ID: {$user_profile->linkedin_id}</li>
                 </ul>
             </div>
         </div>
