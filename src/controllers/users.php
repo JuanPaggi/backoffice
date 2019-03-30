@@ -51,7 +51,7 @@ _::define_controller('jx_user_unlock', function() {
     $id = _::$post['id']->int();
     $user = new users($id);
     if(!$user->void){
-        $user->locked = false;
+        $user->locked = 0;
         $user->save();
         _::$view->ajax(array('status' => 'ok'));
     } else {
@@ -62,7 +62,7 @@ _::define_controller('jx_user_rem_admin', function() {
     $id = _::$post['id']->int();
     $user = new users($id);
     if(!$user->void){
-        $user->is_admin = false;
+        $user->is_admin = 0;
         $user->save();
         _::$view->ajax(array('status' => 'ok'));
     } else {
@@ -73,7 +73,29 @@ _::define_controller('jx_user_add_admin', function() {
     $id = _::$post['id']->int();
     $user = new users($id);
     if(!$user->void){
-        $user->is_admin = true;
+        $user->is_admin = 1;
+        $user->save();
+        _::$view->ajax(array('status' => 'ok'));
+    } else {
+        _::$view->ajax(array('status' => 'err'));
+    }
+});
+_::define_controller('jx_user_do_premium', function() {
+    $id = _::$post['id']->int();
+    $user = new users($id);
+    if(!$user->void){
+        $user->is_premium = 1;
+        $user->save();
+        _::$view->ajax(array('status' => 'ok'));
+    } else {
+        _::$view->ajax(array('status' => 'err'));
+    }
+});
+_::define_controller('jx_user_rem_premium', function() {
+    $id = _::$post['id']->int();
+    $user = new users($id);
+    if(!$user->void){
+        $user->is_premium = 0;
         $user->save();
         _::$view->ajax(array('status' => 'ok'));
     } else {

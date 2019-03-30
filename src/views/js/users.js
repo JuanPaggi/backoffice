@@ -24,6 +24,22 @@ $(document).ready(function(){
             $.post('/jx_user_add_admin', {id: idUser}, function(){window.top.location.reload();});
         }
     });
+    $('.remPremium').click(function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        let idUser = $(this).data('id');
+        if(confirm('Esta seguro de quitar el premium a este usuario?')) {
+            $.post('/jx_user_rem_premium', {id: idUser}, function(){window.top.location.reload();});
+        }
+    });
+    $('.doPremium').click(function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        let idUser = $(this).data('id');
+        if(confirm('Esta seguro de dar premium a este usuario?')) {
+            $.post('/jx_user_do_premium', {id: idUser}, function(){window.top.location.reload();});
+        }
+    });
     $('.deleteUser').click(function(e){
         e.preventDefault();
         e.stopPropagation();

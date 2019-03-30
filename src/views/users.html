@@ -75,6 +75,12 @@
                                         <a href="#" class="dropdown-item doAdmin" data-id="{$user->id_user}">Hacer administrador</a>
                                         {/if}
 
+                                        {if="$user->is_premium"}
+                                        <a href="#" class="dropdown-item remPremium" data-id="{$user->id_user}">Quitar premium</a>
+                                        {else}
+                                        <a href="#" class="dropdown-item doPremium" data-id="{$user->id_user}">Dar premium</a>
+                                        {/if}
+
                                         <!-- <a href="#" class="dropdown-item">Enviar mensaje</a> -->
                                     </div>
                                 </div>
