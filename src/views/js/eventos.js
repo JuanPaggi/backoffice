@@ -33,8 +33,9 @@ $(document).ready(function(){
         e.stopPropagation();
         let idEvento = $(this).data('id');
         let cantidad = prompt('ingrese cantidad de códigos a generar');
-        $.post('/jx_event_codegen', {evento: idEvento, cantidad}, function(){
-            window.top.location.reload();
+        $.post('/jx_event_codegen', {evento: idEvento, cantidad}, function(res){
+            console.log(res);
+            //window.top.location.reload();
         });
     });
 

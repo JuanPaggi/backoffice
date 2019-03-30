@@ -1,6 +1,4 @@
 
-* revisar por que no anda el generador de codigos de acceso.
-
 * falta carteles de errores en las altas de eventos y stands.
 
 * falta editar eventos y stands.
@@ -25,3 +23,4 @@ y la pantalla entera faltaría.
 * falta imagen upload de los logos.
 
 => En agregar stand parece que no agrega el organizador.
+=> autoincrement tabla codigos_externos : id_codigo

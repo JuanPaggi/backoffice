@@ -157,7 +157,7 @@ _::define_controller('jx_event_codegen', function(){
     $evento = new events($eventoID);
     if(!$evento->void) {
         for($i = 0; $i<$cantidad; $i++){
-            $uuid = strtoupper(split(md5(uniqid('BYO', true)+mt_rand(100,999)), 10)[0]);
+            $uuid = strtoupper(substr(md5(uniqid('BYO', true).mt_rand(100,999)), 0, 10));
             $ce = new codigos_externos();
             $ce->id_event = $eventoID;
             $ce->codigo_acceso = $uuid;
