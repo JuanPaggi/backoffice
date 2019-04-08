@@ -9,49 +9,49 @@
                 <form method="post">
                     <div class="form-group">
                         <h3 class="card-body__title">Nombre del evento</h3>
-                        <input type="text" class="form-control" placeholder="Nombre" name="nombre">
+                        <input type="text" class="form-control" placeholder="Nombre" name="nombre" value="{$evento->name}">
                         <i class="form-group__bar"></i>
                     </div>
                     <div class="form-group">
                         <h3 class="card-body__title">Nombre del lugar</h3>
-                        <input type="text" class="form-control" placeholder="La rural" name="nombre_lugar">
+                        <input type="text" class="form-control" placeholder="La rural" name="nombre_lugar" value="{$evento->nombre_lugar}">
                         <i class="form-group__bar"></i>
                     </div>
                     <div class="form-group">
                         <h3 class="card-body__title">Descripcion de la ubicacion</h3>
-                        <input type="text" class="form-control" placeholder="Av 14 de julio" name="desc_location">
+                        <input type="text" class="form-control" placeholder="Av 14 de julio" name="desc_location" value="{$evento->location_description}">
                         <i class="form-group__bar"></i>
                     </div>
                     <div class="form-group">
                         <label>Inicio</label>
                         <input type="text" class="form-control input-mask" name="fechaInicio" data-mask="00/00/0000"
-                            placeholder="eg: 23/05/2019">
+                            placeholder="eg: 23/05/2019" value="{$evento->startDateE()}"> 
                         <i class="form-group__bar"></i>
                     </div>
                     <div class="form-group">
                         <label>Fin</label>
                         <input type="text" class="form-control input-mask" name="fechaFin" data-mask="00/00/0000"
-                            placeholder="eg: 23/05/2019">
+                            placeholder="eg: 23/05/2019" value="{$evento->endDateE()}">
                         <i class="form-group__bar"></i>
                     </div>
                     <div class="form-group">
                         <h3 class="card-body__title">URL de pago</h3>
-                        <input type="text" class="form-control" placeholder="http://mercadopago/4qs5Z" name="url">
+                        <input type="text" class="form-control" placeholder="http://mercadopago/4qs5Z" name="url" value="{$evento->url}">
                         <i class="form-group__bar"></i>
                     </div>
                     <div class="form-group">
                         <h3 class="card-body__title">Radio en metros</h3>
-                        <input type="number" class="form-control" placeholder="15" name="radio">
+                        <input type="number" class="form-control" placeholder="15" name="radio" value="{$evento->radio}">
                         <i class="form-group__bar"></i>
                     </div>
                     <div class="form-group">
                         <h3 class="card-body__title">Latitud</h3>
-                        <input type="text" class="form-control" name="latitud" placeholder="-1.6725349">
+                        <input type="text" class="form-control" name="latitud" placeholder="-1.6725349" value="{$evento->getGPSRecord()->latitude}">
                         <i class="form-group__bar"></i>
                     </div>
                     <div class="form-group">
                         <h3 class="card-body__title">Longitud</h3>
-                        <input type="text" class="form-control" name="longitud" placeholder="1.6725349">
+                        <input type="text" class="form-control" name="longitud" placeholder="1.6725349" value="{$evento->getGPSRecord()->longitude}">
                         <i class="form-group__bar"></i>
                     </div>
                     <div class="form-group">

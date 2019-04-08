@@ -1,5 +1,6 @@
 <?php
 
+
 _::define_controller('events_all', function(){
     _::$view->assign('menu_seleccionado', 'events');
     _::$view->assign('sub_menu_seleccionado', 'all');
@@ -42,10 +43,18 @@ _::define_controller('event_form', function(){
     _::$view->assign('menu_seleccionado', 'events');
     _::$view->assign('sub_menu_seleccionado', 'checkins');
     _::$view->assign('js_file', 'eventos');
+    $id_evento = false;
+    if(isset(_::$get['page'])) {
+        $id_evento = _::$get['page']->int();
+        $evento = new events($id_evento);
+    } else {
+        $evento = new events();
+    }
+    _::$view->assign('evento', $evento);
     if(_::$isPost) {
         // crear evento:
         // TODO: validaciones
-        $evento = new events();
+
         $inicio = explode('/', (string)_::$post['fechaInicio']);
         $fin = explode('/', (string)_::$post['fechaFin']);
         $sdate = new DateTime($inicio[1].'/'.$inicio[0].'/'.$inicio[2]); // m/d/Y
@@ -76,14 +85,45 @@ _::define_controller('event_form', function(){
 
 });
 
+
+
 _::define_controller('stand_form', function(){
     _::$view->assign('menu_seleccionado', 'events');
     _::$view->assign('sub_menu_seleccionado', 'checkins');
     _::$view->assign('js_file', 'eventos');
     $idEvento = _::$get['page']->int();
+    $stand = new stands();
+    _::$view->assign('stand', $stand);
     if(_::$isPost) {
         // TODO: validaciones
-        $stand = new stands();
+        $stand->id_event = $idEvento;
+        $stand->name = (string)_::$post['nombre'];
+        // buscamos a ver si encontramos el id del organizador.
+        $email_organizador = (string)_::$post['organizador'];
+        $user = users::findByEmail($email_organizador);
+        if(!$user->void) {
+            $stand->id_user_organizer = $user->id_user;
+        }
+        $stand->logo = (string)_::$post['file_hash'];
+        $stand->gancho = (string) _::$post['gancho']; // TODO: PENDIENTE
+        $stand->save();
+        // TODO: Habría que indicar que se guardó
+        // redirigimos a la lista de eventos
+        _::redirect('/events_stands/'.$idEvento, false);
+    } else {
+        _::$view->show('stand_form');
+    }
+    
+});
+
+_::define_controller('edit_stand_form', function(){
+    _::$view->assign('menu_seleccionado', 'events');
+    _::$view->assign('sub_menu_seleccionado', 'checkins');
+    _::$view->assign('js_file', 'eventos');
+    $stand = new stands(_::$get['page']->int());
+    _::$view->assign('stand', $stand);
+    if(_::$isPost) {
+        // TODO: validaciones
         $stand->id_event = $idEvento;
         $stand->name = (string)_::$post['nombre'];
         // buscamos a ver si encontramos el id del organizador.

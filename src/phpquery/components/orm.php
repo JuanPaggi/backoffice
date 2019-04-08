@@ -253,11 +253,14 @@ abstract class table
 		return $out;
 	}
 	
-	static public function deleteAll($adding = null, $arrayExec = array())
+	static public function deleteAll($adding = null, $arrayExec = array(), &$error_info)
     {
         if(!empty($adding)) $adding = ' '.trim($adding);
         $q = _::$db->prepare('DELETE FROM '.self::tablename().$adding);
         $q->execute($arrayExec);
+        if($error_info) {
+            $error_info = $q->errorInfo();
+        }
         return true;
     }
 }

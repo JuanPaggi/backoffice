@@ -12,6 +12,7 @@ class stands extends table
     public $name = null;
     public $logo = null;
     public $id_user_organizer = null;
+    public $gancho;
 
     // singleton getOrganizador 
     private $user_organizer = null;

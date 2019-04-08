@@ -45,7 +45,7 @@ $(document).ready(function(){
         e.stopPropagation();
         let idUser = $(this).data('id');
         if(confirm('Esta seguro de eliminar este usuario?')) {
-            $.post('/jx_user_delete', {id: idUser}, function(){window.top.location.reload();});
+            $.post('/jx_user_delete', {id: idUser}, function(){window.top.location = '/users_all';});
         }
     });
 });

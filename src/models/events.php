@@ -21,7 +21,6 @@ class events extends table
     public function isFinished() {
         $dtObject= new DateTime($this->end_date);
         return ($dtObject->getTimestamp() < time());
-    
     }
 
     public function startDate() {
@@ -32,6 +31,24 @@ class events extends table
     public function endDate() {
         $date = new DateTime($this->end_date);
         return $date->format('d/m/Y H:i'); // Y-m-d H:i:s
+    }
+
+    public function startDateE() {
+        $date = new DateTime($this->start_date);
+        return $date->format('d/m/Y'); // Y-m-d H:i:s
+    }
+
+    public function endDateE() {
+        $date = new DateTime($this->end_date);
+        return $date->format('d/m/Y'); // Y-m-d H:i:s
+    }
+
+    private $oGPS;
+    public function getGPSRecord() {
+        if(empty($this->oGPS)) {
+            $this->oGPS = new gps_data_events($this->id_gps_record);
+        }
+        return $this->oGPS;
     }
 
 }

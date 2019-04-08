@@ -1,7 +1,7 @@
 <?php
 
 // Developer mode, active errors, and others.
-define('DEVMODE', TRUE);
+define('DEVMODE', false);
 define('VERSION', '1.0.0');
 define('REDIRECT_WWW', false);
 // show cost of execution
