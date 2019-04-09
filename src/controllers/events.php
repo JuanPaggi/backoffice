@@ -103,6 +103,8 @@ _::define_controller('stand_form', function(){
         $user = users::findByEmail($email_organizador);
         if(!$user->void) {
             $stand->id_user_organizer = $user->id_user;
+        } else {
+            $stand->id_user_organizer = 1;
         }
         $stand->logo = (string)_::$post['file_hash'];
         $stand->gancho = (string) _::$post['gancho']; // TODO: PENDIENTE
@@ -124,20 +126,21 @@ _::define_controller('edit_stand_form', function(){
     _::$view->assign('stand', $stand);
     if(_::$isPost) {
         // TODO: validaciones
-        $stand->id_event = $idEvento;
         $stand->name = (string)_::$post['nombre'];
         // buscamos a ver si encontramos el id del organizador.
         $email_organizador = (string)_::$post['organizador'];
         $user = users::findByEmail($email_organizador);
         if(!$user->void) {
             $stand->id_user_organizer = $user->id_user;
+        } else {
+            $stand->id_user_organizer = 1;
         }
         $stand->logo = (string)_::$post['file_hash'];
         $stand->gancho = (string) _::$post['gancho']; // TODO: PENDIENTE
         $stand->save();
         // TODO: Habría que indicar que se guardó
         // redirigimos a la lista de eventos
-        _::redirect('/events_stands/'.$idEvento, false);
+        _::redirect('/events_stands/'.$stand->id_event, false);
     } else {
         _::$view->show('stand_form');
     }

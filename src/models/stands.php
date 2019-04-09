@@ -17,7 +17,7 @@ class stands extends table
     // singleton getOrganizador 
     private $user_organizer = null;
     public function getOrganizador() {
-        if($this->user_organizer) {
+        if(empty($this->user_organizer)) {
             $this->user_organizer = new users($this->id_user_organizer);
         }
         return $this->user_organizer;
