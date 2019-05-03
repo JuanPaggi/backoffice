@@ -6,7 +6,7 @@ function login(){
         $email = (string)_::$post['user'];
         $pass = (string)_::$post['pass'];
         // $user = new users();
-        $userObj = users::getByEmail($email);
+        $userObj = users::findByEmail($email);
         $salt = base64_decode(explode('$', $userObj->password)[0]);
         $originalPass = explode('$', $userObj->password)[1];
         $accessEncryptedPassword = base64_encode(pbkdf2('SHA1', $pass, $salt, 20000, 256, true));
