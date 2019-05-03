@@ -43,5 +43,7 @@ function dashboard(){
     _::$view->assign('total_premium', users::count('id_user', 'WHERE is_premium = TRUE'));
     _::$view->assign('total_eventos', events::count('id_event'));
     _::$view->assign('amistades', friendships::count('id_user_requester'));
+    _::$view->assign('checkins', stands_checkin::count('*'));
+    _::$view->assign('codigos_vendidos', codigos_externos_usados::count('id_codigo'));
     _::$view->show('index');
 }

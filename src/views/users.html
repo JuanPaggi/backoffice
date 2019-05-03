@@ -30,7 +30,8 @@
                             <th>Email</th>
                             <th>Ultimo acceso</th>
                             <th>Fecha registro</th>
-                            <th>Linkedin</th>
+                            <th>Busco</th>
+                            <th>Ofrezco</th>
                             <th>Premium</th>
                             <th>Bloqueado</th>
                             <th>Acciones</th>
@@ -44,7 +45,8 @@
                             <td>{$user->email}</td>
                             <td>{$user->getFormattedLastLogin()}</td>
                             <td>{$user->getFormattedSignupDate()}</td>
-                            <td>{$user->linkedin_id}</td>
+                            <td>{$user->busco}</td>
+                            <td>{$user->ofrezco}</td>
                             <td>
                                 {if="$user->is_premium"}
                                 <b>SI</b>
