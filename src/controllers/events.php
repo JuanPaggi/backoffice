@@ -71,7 +71,7 @@ _::define_controller('event_form', function(){
 
         $evento->logo = (string)_::$post['file_hash'];
         $evento->url = (string) _::$post['url'];
-        $evento->radio = _::$post['radio']->int();
+        $evento->radio = _::$post['radio']->int() / 1000;
         $evento->nombre_lugar = (string) _::$post['nombre_lugar'];
         $evento->location_description = (string) _::$post['desc_location'];
         $evento->save();
