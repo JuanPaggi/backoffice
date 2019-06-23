@@ -8,14 +8,16 @@
             <div class="SpecVcard">
                 <div class="profile_picture">
                     <img src="{$user_profile->picture_url}" />
-                    <span>{$user_profile->first_name} {$user_profile->last_name}</span>
-                    <div class="busco">
-                        {$user_profile->busco}
+                    <div class="infoBlock">
+                        <span>{$user_profile->first_name} {$user_profile->last_name}</span>
+                        <div class="busco">
+                            {$user_profile->busco}
+                        </div>
+                        <div class="ofrezco">
+                            {$user_profile->ofrezco}
+                        </div>
+                        <button>+</button>
                     </div>
-                    <div class="ofrezco">
-                        {$user_profile->ofrezco}
-                    </div>
-                    <button>Agregar Contacto</button>
                 </div>
                 <div class="mensaje">
                     <textarea name="mensaje">Mensaje que desea adjuntar al contacto</textarea>
@@ -24,7 +26,8 @@
             <div class="title">Enviar:</div>
             <select name="target" id="targets">
                 {loop=$users as $usuario}
-                <option value="{$usuario->id_user}">{$usuario->email} | {$usuario->first_name} {$usuario->last_name}</option>
+                <option value="{$usuario->id_user}">{$usuario->email} | {$usuario->first_name} {$usuario->last_name}
+                </option>
                 {/loop}
             </select>
             <button type="submit">Enviar</button>

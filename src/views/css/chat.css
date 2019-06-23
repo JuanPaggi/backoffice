@@ -1,11 +1,14 @@
 
-// para php
+
 .profile_picture {
   background: white;
   padding: 5px;
   border-radius: 5px;
   box-shadow: 0px 0px 3px #00000080;
   border: 1px solid #c3c3c3;
+  width: 350px;
+  margin: 0 auto;
+  position: relative;
 }
 
 .profile_picture img {
@@ -57,6 +60,7 @@
   top: -10px;
   background: white;
   padding: 0px 5px;
+  width: 200px;
 }
 
 .profile_picture button {
@@ -72,13 +76,16 @@
 }
 
 .SpecVcard .mensaje{
-  display: inline-block;
-  vertical-align: top;
+  display: block;
+  width: 350px;
   margin-top: 8px;
   padding: 10px;
   background: #e2e4db;
   color: #1a1a1a;
   border-radius: 7px 0px 7px 7px;
   position: relative;
-  text-align: center;
+  margin: 5px auto;
+}
+.SpecVcard .mensaje textarea{ 
+  width: 100%;
 }

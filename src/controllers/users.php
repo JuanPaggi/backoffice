@@ -58,7 +58,7 @@ _::define_controller('user_share', function() {
         $mensaje->id_sender = 1;
         $mensaje->id_target = _::$post['target']->int();
         $user = array(
-            'id' => $usr->, 
+            'id' => $usr->id_user, 
             'name' => $usr->first_name.' '.$usr->last_name,
             'busco' => $usr->busco,
             'ofrezco' => $usr->ofrezco,
