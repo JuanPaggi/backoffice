@@ -73,7 +73,7 @@ _::define_controller('user_share', function() {
         if($chat->void) {
             $chat = new chats();
             $chat->id_user_requester = _::$post['target']->int();
-            $chat->id_user_sender = 0;
+            $chat->id_user_sender = 1;
         }
         $chat->last_message_id = $idMSG;
         $chat->save();
@@ -83,7 +83,6 @@ _::define_controller('user_share', function() {
         _::$view->assign('users', users::getAllObjects('id_user', 'WHERE locked = FALSE'));
         _::$view->show('user_share');
     }
-   
 });
 
 // PETICIONES AJAX //
