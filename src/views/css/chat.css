@@ -1,0 +1,84 @@
+
+// para php
+.profile_picture {
+  background: white;
+  padding: 5px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 3px #00000080;
+  border: 1px solid #c3c3c3;
+}
+
+.profile_picture img {
+  width: 100px!important;
+  height: 100px!important;
+  border-radius: 5px!important;
+  vertical-align: top!important;
+  display: inline-block;
+}
+
+.profile_picture .infoBlock {
+  vertical-align: top;
+  display: inline-block;
+  margin: 5px;
+  font-size: 20px;
+}
+
+.profile_picture .infoBlock .busco {
+  font-size: 13px;
+  border: 1px solid #007bb6;
+  position: relative;
+  margin-top: 15px;
+  padding: 3px;
+}
+
+.profile_picture .infoBlock .busco:before {
+  content: 'busco';
+  display: block;
+  color: #007bb6;
+  position: absolute;
+  top: -10px;
+  background: white;
+  padding: 0px 5px;
+}
+
+.profile_picture .infoBlock .ofrezco {
+  font-size: 13px;
+  border: 1px solid #a8cf45;
+  position: relative;
+  margin-top: 15px;
+  padding: 3px;
+}
+
+.profile_picture .infoBlock .ofrezco:before {
+  content: 'ofrezco';
+  display: block;
+  color: #a8cf45;
+  position: absolute;
+  top: -10px;
+  background: white;
+  padding: 0px 5px;
+}
+
+.profile_picture button {
+  position: absolute;
+  padding: 0px;
+  width: 30px;
+  height: 30px;
+  top: 10px;
+  right: 10px;
+  border-radius: 5px;
+  background: #007bb6;
+  color: white;
+}
+
+.SpecVcard .mensaje{
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 8px;
+  padding: 10px;
+  background: #e2e4db;
+  color: #1a1a1a;
+  border-radius: 7px 0px 7px 7px;
+  position: relative;
+  text-align: center;
+}
