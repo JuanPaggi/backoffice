@@ -71,7 +71,7 @@ _::define_controller('event_form', function(){
         $id_gps_data = $gde->save(); // así se obtiene el id incremental del ultimo insertado
         $evento->id_gps_record = $id_gps_data;
 
-        if(isset(_::$post['file_hash']) && _::$post['file_hash'] != null) {
+        if(isset(_::$post['file_hash']) && _::$post['file_hash'] != null && trim(_::$post['file_hash']) != '') {
             $evento->logo = (string)_::$post['file_hash'];
         }
 
@@ -140,7 +140,7 @@ _::define_controller('edit_stand_form', function(){
         } else {
             $stand->id_user_organizer = 1;
         }
-        if(isset(_::$post['file_hash']) && _::$post['file_hash'] != null) {
+        if(isset(_::$post['file_hash']) && _::$post['file_hash'] != null && trim(_::$post['file_hash']) != '') {
             $stand->logo = (string)_::$post['file_hash'];
         }
         $stand->gancho = (string) _::$post['gancho']; // TODO: PENDIENTE
