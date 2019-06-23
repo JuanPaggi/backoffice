@@ -47,6 +47,8 @@ _::define_controller('event_form', function(){
     if(isset(_::$get['page'])) {
         $id_evento = _::$get['page']->int();
         $evento = new events($id_evento);
+        $evento->radio = $evento->radio * 1000;
+
     } else {
         $evento = new events();
     }
@@ -69,7 +71,10 @@ _::define_controller('event_form', function(){
         $id_gps_data = $gde->save(); // así se obtiene el id incremental del ultimo insertado
         $evento->id_gps_record = $id_gps_data;
 
-        $evento->logo = (string)_::$post['file_hash'];
+        if(isset(_::$post['file_hash']) && _::$post['file_hash'] != null) {
+            $evento->logo = (string)_::$post['file_hash'];
+        }
+
         $evento->url = (string) _::$post['url'];
         $evento->radio = _::$post['radio']->int() / 1000;
         $evento->nombre_lugar = (string) _::$post['nombre_lugar'];
@@ -135,7 +140,9 @@ _::define_controller('edit_stand_form', function(){
         } else {
             $stand->id_user_organizer = 1;
         }
-        $stand->logo = (string)_::$post['file_hash'];
+        if(isset(_::$post['file_hash']) && _::$post['file_hash'] != null) {
+            $stand->logo = (string)_::$post['file_hash'];
+        }
         $stand->gancho = (string) _::$post['gancho']; // TODO: PENDIENTE
         $stand->save();
         // TODO: Habría que indicar que se guardó
