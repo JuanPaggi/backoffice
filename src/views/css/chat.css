@@ -30,7 +30,7 @@
   font-size: 13px;
   border: 1px solid #007bb6;
   position: relative;
-  margin-top: 15px;
+  margin-top: 2px;
   padding: 3px;
 }
 
@@ -48,7 +48,7 @@
   font-size: 13px;
   border: 1px solid #a8cf45;
   position: relative;
-  margin-top: 15px;
+  margin-top: 9px;
   padding: 3px;
 }
 
@@ -60,7 +60,6 @@
   top: -10px;
   background: white;
   padding: 0px 5px;
-  width: 200px;
 }
 
 .profile_picture button {

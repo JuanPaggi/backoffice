@@ -4,7 +4,7 @@
     </header>
     <div class="card">
         <form method="post">
-            <div class="title">Enviar:</div>
+            <div class="title">Contacto:</div>
             <div class="SpecVcard">
                 <div class="profile_picture">
                     <img src="{$user_profile->picture_url}" />
@@ -23,14 +23,16 @@
                     <textarea name="mensaje">Mensaje que desea adjuntar al contacto</textarea>
                 </div>
             </div>
-            <div class="title">Enviar:</div>
-            <select name="target" id="targets">
-                {loop=$users as $usuario}
-                <option value="{$usuario->id_user}">{$usuario->email} | {$usuario->first_name} {$usuario->last_name}
-                </option>
-                {/loop}
-            </select>
-            <button type="submit">Enviar</button>
+            <div class="title">Enviar a:</div>
+            <div class="form-group">
+                <select name="target" id="targets" class="form-control">
+                    {loop=$users as $usuario}
+                    <option value="{$usuario->id_user}">{$usuario->email} | {$usuario->first_name} {$usuario->last_name}
+                    </option>
+                    {/loop}
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar</button>
         </form>
     </div>
 </section>

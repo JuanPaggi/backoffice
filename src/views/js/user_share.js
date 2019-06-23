@@ -4,11 +4,12 @@ $(document).ready(function(){
     console.log('finded:', elements);
     elements.sort((elemA, elemB) => {
         // negativo cero positivo
-        return elemA.text() < str2.text() ? -1 : str1.text() > str2.text();
+        return elemA.innerText.toLowerCase() < elemB.innerText.toLowerCase() ? -1 : elemA.innerText.toLowerCase() > elemB.innerText.toLowerCase();
     });
     $('#targets').html('');
     console.log('sorted:', elements);
-    elements.forEach((elem) => {
-        $('#targets').append('<option value="'+elem.val()+'">'+elem.text()+'</option>');
+    elements.each((idx, elem) => {
+        let elemObj = $(elem);
+        $('#targets').append('<option value="'+elemObj.val()+'">'+elemObj.text().toLowerCase()+'</option>');
     });
 });
