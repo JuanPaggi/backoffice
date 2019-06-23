@@ -55,7 +55,7 @@ _::define_controller('user_share', function() {
     if(_::$isPost) {
         // enviar mensaje:
         $mensaje = new mensajes();
-        $mensaje->id_sender = 0;
+        $mensaje->id_sender = 1;
         $mensaje->id_target = _::$post['target']->int();
         $user = array(
             'id' => $usr->, 
