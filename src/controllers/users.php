@@ -54,12 +54,36 @@ _::define_controller('user_share', function() {
     $usr = new users($id_usuario);
     if(_::$isPost) {
         // enviar mensaje:
-
+        $mensaje = new mensajes();
+        $mensaje->id_sender = 0;
+        $mensaje->id_target = _::$post['target']->int();
+        $user = array(
+            'id' => $usr->, 
+            'name' => $usr->first_name.' '.$usr->last_name,
+            'busco' => $usr->busco,
+            'ofrezco' => $usr->ofrezco,
+            'email' => $usr->email,
+            'picture' => $usr->picture_url
+        );
+        $mensaje->messages = '[user='.json_encode($user).'*]'.((string) _::$post['mensaje']);
+        $mensaje->id_target = _::$post['target']->int();
+        $mensaje->fecha = date("Y-m-d H:i:s");
+        $idMSG = $mensaje->save();
+        $chat = new chats(array(_::$post['target']->int(), 0));
+        if($chat->void) {
+            $chat = new chats();
+            $chat->id_user_requester = _::$post['target']->int();
+            $chat->id_user_sender = 0;
+        }
+        $chat->last_message_id = $idMSG;
+        $chat->save();
+        _::redirect('/', false);
     } else {
         _::$view->assign('user_profile', $usr);
         _::$view->assign('users', users::getAllObjects('id_user', 'WHERE locked = FALSE'));
+        _::$view->show('user_share');
     }
-    _::$view->show('user_share');
+   
 });
 
 // PETICIONES AJAX //
