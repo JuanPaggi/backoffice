@@ -46,6 +46,22 @@ _::define_controller('users_profile', function(){
     _::$view->show('perfil');
 });
 
+_::define_controller('user_share', function() {
+    _::$view->assign('menu_seleccionado', 'users');
+    _::$view->assign('sub_menu_seleccionado', 'profile');
+    _::$view->assign('js_file', 'user_share'); // cargar js, el codigo que lo hace está en el footer.html
+    $id_usuario = _::$get['page']->int();
+    $usr = new users($id_usuario);
+    if(_::$isPost) {
+        // enviar mensaje:
+
+    } else {
+        _::$view->assign('user_profile', $usr);
+        _::$view->assign('users', users::getAllObjects('id_user', 'WHERE locked = FALSE'));
+    }
+    _::$view->show('user_share');
+});
+
 // PETICIONES AJAX //
 
 _::define_controller('jx_user_unlock', function() {
