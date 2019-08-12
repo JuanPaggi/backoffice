@@ -7,18 +7,14 @@ function login(){
         $pass = (string)_::$post['pass'];
         // $user = new users();
         $userObj = users::findByEmail($email);
-        $salt = base64_decode(explode('$', $userObj->password)[0]);
-        $originalPass = explode('$', $userObj->password)[1];
-        $accessEncryptedPassword = base64_encode(pbkdf2('SHA1', $pass, $salt, 20000, 256, true));
-        // TODO: quitar este dump.
+        $storedPassword = $userObj->password;
+        $encryptedAccess = hash('sha512', $pass);
         $outDump = array(
-            'OS' => str_split($originalPass, 42)[0],
-            'SessData' => str_split($accessEncryptedPassword, 42)[0],
-            'Valid' => str_split($originalPass, 42)[0] == str_split($accessEncryptedPassword, 42)[0]
+            'storedPassword' => $storedPassword,
+            'accessPassword' => $pass,
+            'encryptedAccess' => $encryptedAccess
         );
-        if(!$userObj->void && 
-            str_split($originalPass, 42)[0] == str_split($accessEncryptedPassword, 42)[0] &&
-            $userObj->is_admin) {
+        if(!$userObj->void && $storedPassword == $encryptedAccess && $userObj->is_admin) {
             $sess = new sessionVar('userID');
             $sess->set($userObj->id_user);
             _::$view->ajax(array('status' => 'ok'));
