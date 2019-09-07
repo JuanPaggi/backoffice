@@ -56,7 +56,6 @@ _::define_controller('user_share', function() {
         // enviar mensaje:
         $mensaje = new mensajes();
         $mensaje->id_sender = 1;
-        $mensaje->id_target = _::$post['target']->int();
         $user = array(
             'id' => $usr->id_user, 
             'name' => $usr->first_name.' '.$usr->last_name,
@@ -68,6 +67,7 @@ _::define_controller('user_share', function() {
         $mensaje->messages = '[user='.json_encode($user).'*]'.((string) _::$post['mensaje']);
         $mensaje->id_target = _::$post['target']->int();
         $mensaje->fecha = date("Y-m-d H:i:s");
+        $mensaje->is_viewed = false;
         $idMSG = $mensaje->save();
         $chat = new chats(array(_::$post['target']->int(), 0));
         if($chat->void) {
@@ -77,7 +77,7 @@ _::define_controller('user_share', function() {
         }
         $chat->last_message_id = $idMSG;
         $chat->save();
-        _::redirect('/', false);
+        _::redirect('/users_all', false);
     } else {
         _::$view->assign('user_profile', $usr);
         _::$view->assign('users', users::getAllObjects('id_user', 'WHERE locked = FALSE'));

@@ -1,9 +1,9 @@
 <?php
 
-dbData::$host = 'rdbs1.tandilserver.com';
-dbData::$user = 'desa_byo';
-dbData::$pass = '01rtZTRgivzl***';
-dbData::$db = 'desa_byo';
+dbData::$host = '127.0.0.1';
+dbData::$user = 'buscoyofrezco';
+dbData::$pass = 'v;]3PVoSD';
+dbData::$db = 'buscoyofrezco';
 
 _::$globals['WEB_LINK'] = ENDPOINT;
     // _::$globals['WEB_LINK'] = 'http://localhost';
