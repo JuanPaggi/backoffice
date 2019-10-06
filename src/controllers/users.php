@@ -55,6 +55,7 @@ _::define_controller('user_share', function() {
     if(_::$isPost) {
         // enviar mensaje:
         $mensaje = new mensajes();
+        $mensaje->id_target = _::$post['target']->int();
         $mensaje->id_sender = 1;
         $user = array(
             'id' => $usr->id_user, 
@@ -65,11 +66,10 @@ _::define_controller('user_share', function() {
             'picture' => $usr->picture_url
         );
         $mensaje->messages = '[user='.json_encode($user).'*]'.((string) _::$post['mensaje']);
-        $mensaje->id_target = _::$post['target']->int();
         $mensaje->fecha = date("Y-m-d H:i:s");
         $mensaje->is_viewed = false;
         $idMSG = $mensaje->save();
-        $chat = new chats(array(_::$post['target']->int(), 0));
+        $chat = new chats(array(_::$post['target']->int(), 1));
         if($chat->void) {
             $chat = new chats();
             $chat->id_user_requester = _::$post['target']->int();

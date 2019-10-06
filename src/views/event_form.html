@@ -44,6 +44,7 @@
                         <input type="number" class="form-control" placeholder="15" name="radio" value="{$evento->radio}">
                         <i class="form-group__bar"></i>
                     </div>
+                    <div id="map"></div>
                     <div class="form-group">
                         <h3 class="card-body__title">Latitud</h3>
                         <input type="text" class="form-control" name="latitud" placeholder="-1.6725349" value="{$evento->getGPSRecord()->latitude}">
@@ -125,3 +126,13 @@
             
         }
     </style>
+    <script>
+        var map;
+        function initMap() {
+          map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: -37.3278163, lng: -59.0933527},
+            zoom: 8
+          });
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>

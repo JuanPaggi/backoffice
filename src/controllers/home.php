@@ -35,6 +35,7 @@ function logout(){
 _::define_controller('dashboard', 'dashboard');
 function dashboard(){
     _::$view->assign('menu_seleccionado', 'home');
+    _::$view->assign('sub_menu_seleccionado', 'home');
     _::$view->assign('total_users', users::count('id_user'));
     _::$view->assign('total_premium', users::count('id_user', 'WHERE is_premium = TRUE'));
     _::$view->assign('total_eventos', events::count('id_event'));
